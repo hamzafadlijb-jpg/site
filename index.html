@@ -44,21 +44,12 @@
         margin: 0;
         font-family: "Barlow", sans-serif;
         color: var(--ink);
-        background:
-          linear-gradient(180deg, rgba(14, 56, 122, 0.05), transparent 22%),
-          linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+        min-height: 100vh;
+        background: #0a234d;
       }
 
       body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        background-image:
-          linear-gradient(rgba(14, 56, 122, 0.025) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(14, 56, 122, 0.025) 1px, transparent 1px);
-        background-size: 72px 72px;
-        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.14), transparent 70%);
+        display: none;
       }
 
       a {
@@ -77,11 +68,46 @@
         margin: 0 auto;
       }
 
+      .page-background {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .page-background-media {
+        position: absolute;
+        inset: -10% -4%;
+        background-image: url("site background.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: translate3d(0, 0, 0) scale(1.12);
+        transform-origin: center top;
+        will-change: transform;
+      }
+
+      .page-background-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(7, 25, 56, 0.78), rgba(7, 25, 56, 0.5) 44%, rgba(7, 25, 56, 0.6) 100%),
+          linear-gradient(180deg, rgba(6, 22, 49, 0.22), rgba(6, 22, 49, 0.52) 58%, rgba(6, 22, 49, 0.72) 100%);
+      }
+
+      .site-header,
+      main,
+      .site-footer {
+        position: relative;
+        z-index: 2;
+      }
+
       .site-header {
         position: sticky;
         top: 0;
         z-index: 50;
-        background: rgba(255, 255, 255, 0.94);
+        background: rgba(255, 255, 255, 0.82);
         border-bottom: 1px solid rgba(14, 56, 122, 0.08);
         backdrop-filter: blur(10px);
       }
@@ -101,18 +127,19 @@
       }
 
       .brand-mark {
-        display: grid;
-        place-items: center;
-        width: 54px;
-        height: 54px;
-        border-radius: 14px;
-        background: linear-gradient(135deg, var(--navy) 0%, #1a4b99 100%);
-        color: var(--white);
-        font-family: "Barlow Condensed", sans-serif;
-        font-size: 1.25rem;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        box-shadow: var(--shadow);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        flex: 0 0 auto;
+      }
+
+      .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 18px rgba(12, 35, 77, 0.18));
       }
 
       .brand-copy {
@@ -192,9 +219,7 @@
       .hero {
         position: relative;
         overflow: hidden;
-        background:
-          linear-gradient(135deg, rgba(10, 40, 88, 0.98), rgba(14, 56, 122, 0.92)),
-          var(--navy);
+        background: transparent;
         color: var(--white);
       }
 
@@ -202,11 +227,8 @@
         content: "";
         position: absolute;
         inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-        background-size: 88px 88px;
-        opacity: 0.5;
+        background:
+          linear-gradient(90deg, rgba(5, 20, 45, 0.36), rgba(5, 20, 45, 0.14) 48%, rgba(5, 20, 45, 0.22));
         pointer-events: none;
       }
 
@@ -226,14 +248,19 @@
         position: relative;
         z-index: 1;
         display: grid;
-        grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.8fr);
-        gap: 1.5rem;
-        align-items: end;
+        grid-template-columns: minmax(0, 620px) minmax(360px, 410px);
+        justify-content: space-between;
+        gap: clamp(3rem, 7vw, 8rem);
+        align-items: center;
         padding: 6.8rem 0 5rem;
       }
 
       .hero-copy {
-        max-width: 760px;
+        width: 100%;
+        justify-self: start;
+        align-self: center;
+        max-width: 620px;
+        margin-right: auto;
       }
 
       .kicker {
@@ -319,6 +346,11 @@
       .hero-panel {
         display: grid;
         gap: 1rem;
+        width: 100%;
+        max-width: 410px;
+        justify-self: end;
+        align-self: center;
+        margin-left: auto;
         padding: 1.8rem;
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: var(--radius-lg);
@@ -393,7 +425,10 @@
       }
 
       .section {
+        position: relative;
         padding: 5.4rem 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.88));
+        backdrop-filter: blur(6px);
       }
 
       .section-header {
@@ -491,7 +526,7 @@
       }
 
       .projects-shell {
-        background: linear-gradient(180deg, #f5f8fd 0%, #ffffff 100%);
+        background: linear-gradient(180deg, rgba(243, 246, 251, 0.88), rgba(255, 255, 255, 0.93));
       }
 
       .projects-grid {
@@ -704,9 +739,11 @@
 
       .site-footer {
         padding: 1.6rem 0 2.4rem;
+        background: rgba(255, 255, 255, 0.84);
         border-top: 1px solid rgba(14, 56, 122, 0.08);
         color: var(--muted);
         font-size: 0.92rem;
+        backdrop-filter: blur(8px);
       }
 
       .reveal {
@@ -732,6 +769,11 @@
 
         .services-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .hero-inner {
+          gap: 1.5rem;
+          justify-content: initial;
         }
       }
 
@@ -766,11 +808,25 @@
           padding: 5.6rem 0 3.6rem;
         }
 
+        .hero-copy,
+        .hero-panel {
+          justify-self: stretch;
+          width: 100%;
+          max-width: none;
+          margin-left: 0;
+        }
+
         .hero-band,
         .services-grid,
         .about-highlights,
         .form-row {
           grid-template-columns: 1fr;
+        }
+
+        .page-background-media {
+          inset: -6% -18%;
+          background-position: center top;
+          transform: translate3d(0, 0, 0) scale(1.08);
         }
       }
 
@@ -790,14 +846,25 @@
           opacity: 1;
           transform: none;
         }
+
+        .page-background-media {
+          transform: scale(1.08) !important;
+        }
       }
     </style>
   </head>
   <body>
+    <div class="page-background" aria-hidden="true">
+      <div class="page-background-media"></div>
+      <div class="page-background-overlay"></div>
+    </div>
+
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="#accueil" aria-label="Retour a l'accueil">
-          <span class="brand-mark">IG</span>
+          <span class="brand-mark">
+            <img src="Logo Infragec.png" alt="Logo INFRAGEC" />
+          </span>
           <span class="brand-copy">
             <strong>INFRAGEC</strong>
             <span>Infrastructure &amp; Genie Civil</span>
@@ -1080,15 +1147,15 @@
               <div class="contact-list">
                 <div class="contact-item">
                   <strong>Telephone</strong>
-                  <a href="tel:+212600000000">+212 6 00 00 00 00</a>
+                  <a href="tel:+212661429451">+212 6 61 42 94 51</a>
                 </div>
                 <div class="contact-item">
                   <strong>Email</strong>
-                  <a href="mailto:contact@infragec.com">contact@infragec.com</a>
+                  <a href="mailto:administration@infragec.com">administration@infragec.com</a>
                 </div>
                 <div class="contact-item">
-                  <strong>Disponibilite</strong>
-                  <span>Lun - Ven | 08:30 - 18:00</span>
+                  <strong>Adresse</strong>
+                  <span>N°98 Rue de FES Quartier Industriel - Agadir</span>
                 </div>
               </div>
 
@@ -1155,6 +1222,8 @@
     <script>
       const menuButton = document.querySelector(".menu-toggle");
       const nav = document.querySelector(".main-nav");
+      const backgroundMedia = document.querySelector(".page-background-media");
+      const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
       if (menuButton && nav) {
         menuButton.addEventListener("click", () => {
@@ -1194,6 +1263,35 @@
         revealElements.forEach((element) => {
           element.classList.add("is-visible");
         });
+      }
+
+      if (backgroundMedia && !reduceMotionQuery.matches) {
+        let ticking = false;
+
+        const updateParallax = () => {
+          const scrollTop = window.scrollY || window.pageYOffset;
+          const isMobile = window.innerWidth <= 760;
+          const ratio = isMobile ? 0.08 : 0.16;
+          const maxShift = isMobile ? 90 : 180;
+          const scale = isMobile ? 1.08 : 1.12;
+          const shift = Math.min(scrollTop * ratio, maxShift);
+
+          backgroundMedia.style.transform =
+            `translate3d(0, ${-shift}px, 0) scale(${scale})`;
+
+          ticking = false;
+        };
+
+        const requestParallaxFrame = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        };
+
+        updateParallax();
+        window.addEventListener("scroll", requestParallaxFrame, { passive: true });
+        window.addEventListener("resize", requestParallaxFrame);
       }
     </script>
   </body>
