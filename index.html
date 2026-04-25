@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFRAGEC | Infrastructure &amp; Genie Civil</title>
+    <meta
+      name="description"
+      content="INFRAGEC, entreprise de genie civil, VRD, assainissement et amenagement urbain."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0e387a;
+        --navy-deep: #0a2858;
+        --steel: #9fafca;
+        --steel-deep: #7384a3;
+        --white: #ffffff;
+        --paper: #f3f6fb;
+        --line: rgba(14, 56, 122, 0.14);
+        --ink: #14233f;
+        --muted: #596a89;
+        --shadow: 0 24px 60px rgba(12, 35, 77, 0.12);
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+        --container: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Barlow", sans-serif;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, rgba(14, 56, 122, 0.05), transparent 22%),
+          linear-gradient(180deg, #ffffff 0%, #f6f8fc 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(14, 56, 122, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(14, 56, 122, 0.025) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.14), transparent 70%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid rgba(14, 56, 122, 0.08);
+        backdrop-filter: blur(10px);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 84px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--navy) 0%, #1a4b99 100%);
+        color: var(--white);
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        box-shadow: var(--shadow);
+      }
+
+      .brand-copy {
+        display: grid;
+        gap: 0.12rem;
+      }
+
+      .brand-copy strong {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.35rem;
+        letter-spacing: 0.14em;
+      }
+
+      .brand-copy span {
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .menu-toggle {
+        display: none;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--white);
+        color: var(--navy);
+        padding: 0.85rem 1rem;
+        font-weight: 700;
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+      }
+
+      .main-nav a {
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: color 180ms ease;
+      }
+
+      .main-nav a:hover,
+      .main-nav a:focus-visible {
+        color: var(--navy);
+      }
+
+      .header-button,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0.9rem 1.3rem;
+        border-radius: 999px;
+        font-weight: 700;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          border-color 180ms ease,
+          color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .header-button {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .header-button:hover,
+      .header-button:focus-visible {
+        background: var(--navy-deep);
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(10, 40, 88, 0.98), rgba(14, 56, 122, 0.92)),
+          var(--navy);
+        color: var(--white);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 88px 88px;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -100px;
+        top: -80px;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(159, 175, 202, 0.22), transparent 68%);
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.8fr);
+        gap: 1.5rem;
+        align-items: end;
+        padding: 6.8rem 0 5rem;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+      }
+
+      .kicker {
+        margin: 0 0 1rem;
+        color: rgba(255, 255, 255, 0.72);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .section-kicker {
+        color: var(--navy);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1;
+      }
+
+      h1,
+      h2 {
+        font-family: "Barlow Condensed", sans-serif;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(4rem, 10vw, 7.8rem);
+        letter-spacing: 0.08em;
+      }
+
+      .hero-subtitle {
+        margin: 1rem 0 0;
+        color: var(--steel);
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero-description {
+        max-width: 58ch;
+        margin: 1.4rem 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.03rem;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2rem;
+      }
+
+      .button-primary {
+        background: var(--white);
+        color: var(--navy);
+        box-shadow: 0 14px 36px rgba(8, 22, 48, 0.24);
+      }
+
+      .button-primary:hover,
+      .button-primary:focus-visible {
+        background: #eef3fb;
+        transform: translateY(-2px);
+      }
+
+      .button-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        color: var(--white);
+        background: transparent;
+      }
+
+      .button-secondary:hover,
+      .button-secondary:focus-visible {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.42);
+        transform: translateY(-2px);
+      }
+
+      .hero-panel {
+        display: grid;
+        gap: 1rem;
+        padding: 1.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+        box-shadow: 0 24px 50px rgba(5, 15, 34, 0.22);
+      }
+
+      .hero-panel h2 {
+        font-size: 2rem;
+      }
+
+      .hero-panel p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.72;
+      }
+
+      .hero-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .hero-item {
+        padding: 1rem 1.05rem;
+        border-radius: var(--radius-sm);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .hero-item strong {
+        display: block;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.15rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .hero-item span {
+        display: block;
+        margin-top: 0.35rem;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.55;
+      }
+
+      .hero-band {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .hero-band article {
+        padding: 1.2rem 1.4rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .hero-band strong {
+        display: block;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-band span {
+        display: block;
+        margin-top: 0.35rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .section {
+        padding: 5.4rem 0;
+      }
+
+      .section-header {
+        display: grid;
+        gap: 0.8rem;
+        max-width: 760px;
+        margin-bottom: 2.2rem;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.78;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: var(--navy);
+        letter-spacing: 0.05em;
+      }
+
+      .services-grid,
+      .projects-grid {
+        display: grid;
+        gap: 1.2rem;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .service-card,
+      .project-card,
+      .about-panel,
+      .contact-panel,
+      .contact-form {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow);
+      }
+
+      .service-card,
+      .project-card {
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .service-card:hover,
+      .service-card:focus-within,
+      .project-card:hover,
+      .project-card:focus-within {
+        transform: translateY(-4px);
+        border-color: rgba(14, 56, 122, 0.22);
+        box-shadow: 0 22px 44px rgba(12, 35, 77, 0.14);
+      }
+
+      .service-card {
+        padding: 1.55rem;
+      }
+
+      .service-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(14, 56, 122, 0.08), rgba(159, 175, 202, 0.18));
+        color: var(--navy);
+      }
+
+      .service-card h3,
+      .project-card h3,
+      .about-panel h3,
+      .contact-panel h3,
+      .contact-form h3 {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.55rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--navy);
+      }
+
+      .service-card p,
+      .project-card p,
+      .about-panel p,
+      .contact-panel p {
+        margin: 0.85rem 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .projects-shell {
+        background: linear-gradient(180deg, #f5f8fd 0%, #ffffff 100%);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-card {
+        overflow: hidden;
+      }
+
+      .project-top {
+        position: relative;
+        height: 210px;
+        background:
+          linear-gradient(135deg, rgba(10, 40, 88, 0.96), rgba(14, 56, 122, 0.86)),
+          var(--navy);
+      }
+
+      .project-top::before,
+      .project-top::after {
+        content: "";
+        position: absolute;
+      }
+
+      .project-top::before {
+        inset: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .project-top::after {
+        left: 24px;
+        right: 24px;
+        bottom: 30px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .project-index {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        color: rgba(255, 255, 255, 0.34);
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .project-body {
+        padding: 1.5rem;
+      }
+
+      .project-location {
+        display: inline-block;
+        margin-top: 0.7rem;
+        color: var(--steel-deep);
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .about-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 1.3rem;
+        align-items: start;
+      }
+
+      .about-panel,
+      .contact-panel,
+      .contact-form {
+        padding: 1.8rem;
+      }
+
+      .about-highlights {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .about-highlights article {
+        padding: 1rem 1.05rem;
+        border-radius: var(--radius-sm);
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+
+      .about-highlights strong {
+        display: block;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        color: var(--navy);
+      }
+
+      .about-highlights span {
+        display: block;
+        margin-top: 0.3rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1.2rem;
+      }
+
+      .contact-item {
+        padding: 1rem 1.05rem;
+        border-radius: var(--radius-sm);
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+
+      .contact-item strong {
+        display: block;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--navy);
+      }
+
+      .contact-item span,
+      .contact-item a {
+        display: inline-block;
+        margin-top: 0.35rem;
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .whatsapp-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        margin-top: 1rem;
+        border-radius: 999px;
+        background: #1f9d55;
+        color: var(--white);
+        font-weight: 700;
+        transition:
+          transform 180ms ease,
+          background 180ms ease;
+      }
+
+      .whatsapp-button:hover,
+      .whatsapp-button:focus-visible {
+        background: #1a8849;
+        transform: translateY(-2px);
+      }
+
+      .contact-form form {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.45rem;
+        color: var(--ink);
+        font-size: 0.94rem;
+        font-weight: 600;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.95rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--paper);
+        color: var(--ink);
+        transition:
+          border-color 180ms ease,
+          box-shadow 180ms ease,
+          background 180ms ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        background: var(--white);
+        border-color: rgba(14, 56, 122, 0.4);
+        box-shadow: 0 0 0 4px rgba(14, 56, 122, 0.08);
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-button {
+        border: 0;
+        cursor: pointer;
+      }
+
+      .site-footer {
+        padding: 1.6rem 0 2.4rem;
+        border-top: 1px solid rgba(14, 56, 122, 0.08);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 520ms ease,
+          transform 520ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1080px) {
+        .hero-inner,
+        .projects-grid,
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .header-inner {
+          flex-wrap: wrap;
+          padding: 1rem 0;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+          margin-left: auto;
+        }
+
+        .main-nav {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          padding-top: 0.75rem;
+        }
+
+        .main-nav.is-open {
+          display: flex;
+        }
+
+        .header-button {
+          display: none;
+        }
+
+        .hero-inner {
+          padding: 5.6rem 0 3.6rem;
+        }
+
+        .hero-band,
+        .services-grid,
+        .about-highlights,
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition: none !important;
+          animation: none !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#accueil" aria-label="Retour a l'accueil">
+          <span class="brand-mark">IG</span>
+          <span class="brand-copy">
+            <strong>INFRAGEC</strong>
+            <span>Infrastructure &amp; Genie Civil</span>
+          </span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          Menu
+        </button>
+
+        <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+          <a href="#services">Services</a>
+          <a href="#projets">Projets</a>
+          <a href="#apropos">A propos</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="header-button" href="#contact">Demander un devis</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="accueil">
+        <div class="container hero-inner">
+          <div class="hero-copy reveal">
+            <p class="kicker">Entreprise de construction &amp; d'infrastructure</p>
+            <h1>INFRAGEC</h1>
+            <p class="hero-subtitle">Infrastructure &amp; Genie Civil</p>
+            <p class="hero-description">
+              INFRAGEC intervient sur les projets de genie civil, de VRD, d'assainissement
+              et d'amenagement urbain avec une execution rigoureuse, une lecture
+              technique exigeante et une maitrise constante des delais.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#projets">Voir nos projets</a>
+              <a class="button button-secondary" href="#contact">Demander un devis</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel reveal" aria-label="Points forts">
+            <h2>Une organisation construite pour la livraison</h2>
+            <p>
+              Nous structurons chaque chantier autour du pilotage, du controle
+              technique et du respect des engagements contractuels.
+            </p>
+
+            <div class="hero-list">
+              <div class="hero-item">
+                <strong>Fiabilite chantier</strong>
+                <span>Preparation methodique et coordination continue des intervenants.</span>
+              </div>
+              <div class="hero-item">
+                <strong>Expertise technique</strong>
+                <span>Lecture precise des contraintes de sol, de reseaux et d'execution.</span>
+              </div>
+              <div class="hero-item">
+                <strong>Respect des delais</strong>
+                <span>Planification stricte et suivi permanent des objectifs operationnels.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-band">
+          <article>
+            <strong>Genie civil</strong>
+            <span>Ouvrages structurels et infrastructures techniques</span>
+          </article>
+          <article>
+            <strong>VRD &amp; reseaux</strong>
+            <span>Voirie, raccordements et organisation des flux</span>
+          </article>
+          <article>
+            <strong>Execution maitrisee</strong>
+            <span>Qualite, securite et delais au coeur du chantier</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="kicker section-kicker">Services</p>
+            <h2>Des expertises structurees pour des ouvrages durables</h2>
+            <p>
+              Nos equipes interviennent sur des projets d'infrastructure avec une
+              approche sobre, technique et orientee resultat, depuis la preparation
+              jusqu'a la mise en oeuvre sur site.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card reveal">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 19h16" />
+                  <path d="M6 19V8l6-4 6 4v11" />
+                  <path d="M10 19v-5h4v5" />
+                </svg>
+              </div>
+              <h3>Genie Civil</h3>
+              <p>
+                Realisation d'ouvrages de structure, plateformes et infrastructures
+                avec un niveau d'exigence adapte aux contraintes du terrain.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M3 17h18" />
+                  <path d="M6 17l3-8h6l3 8" />
+                  <path d="M10 9l2-4 2 4" />
+                </svg>
+              </div>
+              <h3>VRD</h3>
+              <p>
+                Mise en oeuvre des voiries et reseaux divers pour assurer la
+                fonctionnalite complete des zones amenagees et de leurs raccordements.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3v10" />
+                  <path d="M8 9c0 2.5 1.8 4.5 4 4.5s4-2 4-4.5" />
+                  <path d="M7 21c1.2-3.1 3-4.6 5-4.6s3.8 1.5 5 4.6" />
+                </svg>
+              </div>
+              <h3>Assainissement</h3>
+              <p>
+                Installation, extension et rehabilitation de reseaux d'assainissement
+                avec une attention constante a la conformite et a la perennite.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 19h16" />
+                  <path d="M5 19V8l7-4 7 4v11" />
+                  <path d="M9 11h.01" />
+                  <path d="M15 11h.01" />
+                  <path d="M9 15h.01" />
+                  <path d="M15 15h.01" />
+                </svg>
+              </div>
+              <h3>Amenagement Urbain</h3>
+              <p>
+                Amenagement qualitatif des espaces publics avec integration des
+                circulations, des reseaux et des usages urbains.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section projects-shell" id="projets">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="kicker section-kicker">Projets</p>
+            <h2>Des references qui parlent execution, coordination et resultat</h2>
+            <p>
+              Chaque operation mobilise une logique de terrain, une maitrise des
+              interfaces techniques et une capacite a tenir les delais de livraison.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <div class="project-top" aria-hidden="true">
+                <span class="project-index">01</span>
+              </div>
+              <div class="project-body">
+                <h3>Rehabilitation de voirie primaire</h3>
+                <span class="project-location">Casablanca</span>
+                <p>
+                  Reprise des chaussees, trottoirs et reseaux avec maintien des
+                  circulations et phasage adapte a un environnement urbain dense.
+                </p>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-top" aria-hidden="true">
+                <span class="project-index">02</span>
+              </div>
+              <div class="project-body">
+                <h3>Extension de reseau d'assainissement</h3>
+                <span class="project-location">Rabat</span>
+                <p>
+                  Creation de lignes nouvelles, raccordements et traitement des
+                  interfaces pour accompagner le developpement d'un secteur residentiel.
+                </p>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-top" aria-hidden="true">
+                <span class="project-index">03</span>
+              </div>
+              <div class="project-body">
+                <h3>Amenagement d'esplanade urbaine</h3>
+                <span class="project-location">Marrakech</span>
+                <p>
+                  Intervention complete sur les VRD, le traitement des surfaces
+                  et l'organisation des flux pietons dans un espace public majeur.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="apropos">
+        <div class="container about-grid">
+          <div class="section-header reveal">
+            <p class="kicker section-kicker">A propos</p>
+            <h2>Une entreprise de terrain appuyee sur la rigueur technique</h2>
+            <p>
+              INFRAGEC place la fiabilite d'execution, la maitrise technique et le
+              respect des echeances au centre de chaque chantier. Notre approche
+              repose sur une lecture precise des contraintes, une organisation claire
+              et une presence operationnelle constante pour livrer des ouvrages
+              conformes, robustes et durables.
+            </p>
+          </div>
+
+          <aside class="about-panel reveal">
+            <h3>Trois engagements de conduite</h3>
+            <p>
+              Une discipline de chantier forte, des methodes d'execution lisibles
+              et une coordination continue entre etudes, terrain et client.
+            </p>
+
+            <div class="about-highlights">
+              <article>
+                <strong>Fiabilite</strong>
+                <span>Des choix techniques et operationnels cadres par le terrain.</span>
+              </article>
+              <article>
+                <strong>Expertise</strong>
+                <span>Une maitrise concrete des travaux d'infrastructure et de reseaux.</span>
+              </article>
+              <article>
+                <strong>Delais</strong>
+                <span>Un pilotage serre pour tenir les jalons et la livraison finale.</span>
+              </article>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section projects-shell" id="contact">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="kicker section-kicker">Contact</p>
+            <h2>Echangeons sur votre projet</h2>
+            <p>
+              Pour un appel d'offres, une consultation technique ou une demande de
+              devis, notre equipe vous repond rapidement avec un cadrage initial clair.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <aside class="contact-panel reveal">
+              <h3>Coordonnees</h3>
+              <p>
+                Une ligne directe pour les demandes commerciales et techniques,
+                avec un premier retour sur la faisabilite et le perimetre du besoin.
+              </p>
+
+              <div class="contact-list">
+                <div class="contact-item">
+                  <strong>Telephone</strong>
+                  <a href="tel:+212600000000">+212 6 00 00 00 00</a>
+                </div>
+                <div class="contact-item">
+                  <strong>Email</strong>
+                  <a href="mailto:contact@infragec.com">contact@infragec.com</a>
+                </div>
+                <div class="contact-item">
+                  <strong>Disponibilite</strong>
+                  <span>Lun - Ven | 08:30 - 18:00</span>
+                </div>
+              </div>
+
+              <a
+                class="whatsapp-button"
+                href="https://wa.me/212600000000"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contacter via WhatsApp
+              </a>
+            </aside>
+
+            <div class="contact-form reveal">
+              <h3>Demander un devis</h3>
+              <form action="#" method="post">
+                <div class="form-row">
+                  <label>
+                    Nom
+                    <input type="text" name="name" placeholder="Votre nom" required />
+                  </label>
+                  <label>
+                    Entreprise
+                    <input type="text" name="company" placeholder="Nom de votre entreprise" />
+                  </label>
+                </div>
+
+                <div class="form-row">
+                  <label>
+                    Email
+                    <input type="email" name="email" placeholder="vous@entreprise.com" required />
+                  </label>
+                  <label>
+                    Telephone
+                    <input type="tel" name="phone" placeholder="+212 ..." />
+                  </label>
+                </div>
+
+                <label>
+                  Message
+                  <textarea
+                    name="message"
+                    placeholder="Decrivez la nature du projet, le lieu, le delai souhaite et vos contraintes principales."
+                    required
+                  ></textarea>
+                </label>
+
+                <button class="button button-primary submit-button" type="submit">
+                  Envoyer la demande
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        INFRAGEC - Infrastructure &amp; Genie Civil. Tous droits reserves.
+      </div>
+    </footer>
+
+    <script>
+      const menuButton = document.querySelector(".menu-toggle");
+      const nav = document.querySelector(".main-nav");
+
+      if (menuButton && nav) {
+        menuButton.addEventListener("click", () => {
+          const isOpen = nav.classList.toggle("is-open");
+          menuButton.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        nav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            nav.classList.remove("is-open");
+            menuButton.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      const revealElements = document.querySelectorAll(".reveal");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.16,
+          }
+        );
+
+        revealElements.forEach((element) => {
+          observer.observe(element);
+        });
+      } else {
+        revealElements.forEach((element) => {
+          element.classList.add("is-visible");
+        });
+      }
+    </script>
+  </body>
+</html>
